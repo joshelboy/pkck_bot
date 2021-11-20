@@ -32,3 +32,7 @@ To create new commands u just need to create a new Module in "Commands". The
 eventhandler is automaticly calling it, when ist command is getting used.
 Same for buttons. Look out for labeling misstakes.
 *Run "deploy-commands"* after u created new commands. Global commands may take up to 1h to register.
+
+# For u to do
+* create service file for the bot AND the generateW2G
+* call generateW2G every 24h or add a function call into the bot script
