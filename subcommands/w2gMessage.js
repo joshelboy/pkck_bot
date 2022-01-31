@@ -10,7 +10,7 @@ module.exports = {
 
     async execute(interaction, edit) {
 
-        fs.readFile("./w2gLink.json", "utf8", (err, jsonString) => {
+        fs.readFile("./config/w2gLink.json", "utf8", (err, jsonString) => {
             if (err) {
                 console.log("File read failed:", err);
                 return;

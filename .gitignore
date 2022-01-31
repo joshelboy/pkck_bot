@@ -1,5 +1,7 @@
 node_modules
 .idea
-config.json
-w2g.json
-w2gLink.json
+config/config.json
+config/w2g.json
+config/w2gLink.json
+config/db_config.json.json
+pkck_bot.iml

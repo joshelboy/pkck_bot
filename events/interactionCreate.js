@@ -1,8 +1,3 @@
-/*const generateW2G = require('../generateW2G');
-const { link } = require('../w2gLink');
-const {Collection, MessageComponentInteraction} = require("discord.js");
-const fs = require("fs");*/
-
 module.exports = {
     name: 'interactionCreate',
     async execute(interaction) {
@@ -27,6 +22,15 @@ module.exports = {
                 await require(`../buttons/${button}`).execute(interaction);
             } catch (error) {
                 console.error(error);
+            }
+        }
+
+        if(interaction.isSelectMenu()){
+            const select = interaction.customId;
+            try {
+                await require(`../select_menus/selectMindFactory.js`).execute(interaction);
+            } catch (err){
+                console.error(err);
             }
         }
     },

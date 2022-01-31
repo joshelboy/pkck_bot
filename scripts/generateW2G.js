@@ -1,6 +1,6 @@
 //Init
 const fetch = require('node-fetch');
-const { url, method, type, apiKey, share, bg_color, bg_opacity } = require('./w2g.json');
+const { url, method, type, apiKey, share, bg_color, bg_opacity } = require('../config/w2g.json');
 const fs = require('fs');
 
 //Defining params for fetch request
@@ -17,7 +17,6 @@ const data = JSON.stringify({
 
 /**
  * @return Return is needed, because u need a promise for await to work
- * @type {{name: string, execute(): Promise<*|string>}}
  */
 module.exports = {
     name: "generateW2G",
@@ -42,7 +41,7 @@ module.exports = {
                     const jsonFile = JSON.stringify(JSON.parse(fetchedData));
 
 
-                    fs.writeFile("w2gLink.json", jsonFile, 'utf8', function (err) {
+                    fs.writeFile("./config/w2gLink.json", jsonFile, 'utf8', function (err) {
                         if (err) {
                             console.log("An error occured while writing JSON Object to File.");
                         }
