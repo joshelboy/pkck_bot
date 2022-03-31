@@ -34,7 +34,8 @@ module.exports = {
                                     path: '/api/v3/oauth/token?client_id=68240&client_secret=4b4bfa0504aa728620139c88fcd58e731b506146&grant_type=refresh_token&refresh_token=' + row.strava_refresh_token,
                                     method: 'POST'
                                 }
-                                https.request(options, (response) => {
+                                try{
+                                https.get(options, (response) => {
                                     var result = '';
                                     
                                     response.on('data', function(chunk) {
@@ -45,9 +46,10 @@ module.exports = {
                                         if (result != null | result != ''){
                                             result = JSON.parse(result);
 
-                                            let update = `UPDATE users SET strava_access_token = '` + result.access_token + `', strava_expires_at = '` + result.expires_in `', strava_refresh_token = '` + result.refresh_token + `' WHERE strava_id = '` + row.strava_id `'`;
+                                            let update = "UPDATE users SET strava_access_token = $1, strava_expires_at = $2, strava_refresh_token = $3 WHERE strava_id = $4";
+                                            let update_values = [result.access_token, result.expires_in, result.refresh_token, row.strava_id];
 
-                                            db_client.query(update, (err, res) => {
+                                            db_client.query(update, update_values, (err, res) => {
                                                 if (err) {
                                                     return console.log(err);
                                                 }
@@ -59,6 +61,10 @@ module.exports = {
                                         }
                                     })
                                 })
+                            }
+                            catch (err){
+                                console.log(err);
+                            }
                             }    
                         }
                     }
