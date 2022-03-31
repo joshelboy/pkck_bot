@@ -2,6 +2,7 @@ const nodeCron = require('node-cron');
 const generateW2G = require('../scripts/generateW2G');
 const mfTracker = require('../scripts/mfTracker');
 const strava_refresh = require('../scripts/strava_refresh');
+const strava_getter = require('../scripts/strava_getter');
 
 async function generate(){
     await generateW2G.execute();
@@ -21,12 +22,19 @@ module.exports = {
     once: true,
     execute(client) {
         console.log(`Ready! Logged in as ${client.user.tag}`);
+
         const jobW2G = nodeCron.schedule("0 0 18 * * *", generate);
+
         const jobMF = nodeCron.schedule("00 * * * * *", () => {
             mfTracker.execute(client);
         });
-        const jobStrava = nodeCron.schedule("00 * * * * *", () => {
+
+        const jobStravaRefresh = nodeCron.schedule("00 * * * * *", () => {
             strava_refresh.execute();
+        });
+
+        const jobStravaGet = nodeCron.schedule("00 * * * * *", () => {
+            strava_getter.execute();
         })
     },
 };
