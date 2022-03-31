@@ -1,0 +1,11 @@
+{
+  "url": "https://w2g.tv/rooms/create.json",
+  "host": "w2g.tv",
+  "path": "/rooms/create.json",
+  "method": "POST",
+  "type": "application/json",
+  "share": "https://www.youtube.com/watch?v=Twi92KYddW4",
+  "bg_color": "#535252",
+  "bg_opacity": "50",
+  "apiKey": ""
+}
