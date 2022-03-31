@@ -29,11 +29,11 @@ module.exports = {
             mfTracker.execute(client);
         });
 
-        const jobStravaRefresh = nodeCron.schedule("00 * * * * *", () => {
+        const jobStravaRefresh = nodeCron.schedule("* * */1 * * *", () => {
             strava_refresh.execute();
         });
 
-        const jobStravaGet = nodeCron.schedule("00 * * * * *", () => {
+        const jobStravaGet = nodeCron.schedule("* * */12 * * *", () => {
             strava_getter.execute();
         })
     },

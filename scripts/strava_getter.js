@@ -37,7 +37,7 @@ module.exports = {
 
                 db_client.query(select, (err, res) => {
                     if (err) {
-
+                        console.log(err);
                     }
                     if (res) {
                         for (let row of res.rows) {
@@ -46,12 +46,11 @@ module.exports = {
 
                             for (let pageCounter = 1; pageCounter < 5; pageCounter++) {
 
-
                                 const options = {
                                     hostname: 'www.strava.com',
                                     path: '/api/v3/athlete/activities?before&after&page=' + pageCounter + '&per_page=99',
                                     headers: {
-                                        Authorization: 'Bearer 8966be5b028de9736f96d31898846aad000b2833'
+                                        Authorization: 'Bearer ' + row.strava_access_token
                                     }
                                 }
 
