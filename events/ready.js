@@ -1,6 +1,7 @@
 const nodeCron = require('node-cron');
 const generateW2G = require('../scripts/generateW2G');
-const mfTracker = require('../scripts/mfTracker')
+const mfTracker = require('../scripts/mfTracker');
+const strava_refresh = require('../scripts/strava_refresh');
 
 async function generate(){
     await generateW2G.execute();
@@ -24,5 +25,8 @@ module.exports = {
         const jobMF = nodeCron.schedule("00 * * * * *", () => {
             mfTracker.execute(client);
         });
+        const jobStrava = nodeCron.schedule("00 * * * * *", () => {
+            strava_refresh.execute();
+        })
     },
 };
