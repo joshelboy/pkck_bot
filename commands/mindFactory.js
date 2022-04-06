@@ -62,7 +62,7 @@ module.exports = {
 
             } else if (typ === 'unsubscribe') {
 
-                var options = [];
+                let options = [];
 
                 db_pool.connect(function (err, db_client, done) {
                     if (err) {

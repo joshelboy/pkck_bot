@@ -36,7 +36,7 @@ module.exports = {
                                 }
                                 try{
                                 https.get(options, (response) => {
-                                    var result = '';
+                                    let result = '';
                                     
                                     response.on('data', function(chunk) {
                                         result += chunk;
