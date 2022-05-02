@@ -47,7 +47,7 @@ module.exports = {
           }
           if (res) {
             for (let row of res.rows) {
-              let name = row.strava_name;
+              let name = row.strava_id;
 
               for (let pageCounter = 1; pageCounter < 5; pageCounter++) {
                 const options = {
