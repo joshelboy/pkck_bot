@@ -21,7 +21,7 @@ const db_pool = new Pool({
 });
 
 const refresh =
-  "DROP TABLE IF EXISTS strava; CREATE TABLE IF NOT EXISTS strava (title varchar, distance varchar, date date, athlete varchar, type varchar)";
+  "DROP TABLE IF EXISTS strava; CREATE TABLE IF NOT EXISTS strava (title varchar, distance varchar, date date, athlete varchar, type varchar, kudos numeric, maxspeed numeric, avgspeed numeric, elevation numeric)";
 const select = "SELECT * FROM users";
 
 module.exports = {
@@ -78,13 +78,17 @@ module.exports = {
                       let tour = result[i];
 
                       let insertRow =
-                        "INSERT INTO strava (title, distance, date, athlete, type) VALUES ($1, $2, $3, $4, $5)";
+                        "INSERT INTO strava (title, distance, date, athlete, type, kudos, maxspeed, avgspeed, elevation) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
                       let insertRow_values = [
                         tour.name,
                         tour.distance,
                         tour.start_date_local,
                         name,
                         tour.type,
+                        tour.kudos_count,
+                        tour.max_speed,
+                        tour.average_speed,
+                        tour.total_elevation_gain,
                       ];
 
                       db_client.query(
