@@ -34,7 +34,7 @@ module.exports = {
                         return console.log(err);
                     }
                     if (res) {
-                        event_list = res;
+                        event_list = res.rows;
                     }
                 });
 
