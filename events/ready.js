@@ -39,7 +39,7 @@ module.exports = {
     });
 
     const jobInviteSend = nodeCron.schedule("*/10 * * * * *", () => {
-      invite_manager.execute();
+      invite_manager.execute(client);
     });
   },
 };
