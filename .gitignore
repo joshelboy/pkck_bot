@@ -1,4 +1,6 @@
 node_modules
 .idea
 pkck_bot.iml
-config
+config/config.json
+config/db_config.json
+config/w2g.json

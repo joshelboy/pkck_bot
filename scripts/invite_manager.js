@@ -49,8 +49,9 @@ module.exports = {
                                 let targetEvent;
 
                                 for (let event of event_list) {
-                                    if (event.id === row.eventID) {
+                                    if (event.id == row.eventID) {
                                         targetEvent = event;
+                                        console.log('Found event: ' + targetEvent.title);
                                     }
                                 }
 
