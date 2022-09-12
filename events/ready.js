@@ -30,15 +30,15 @@ module.exports = {
       mfTracker.execute(client);
     });
 
-    const jobStravaRefresh = nodeCron.schedule("0 */1 * * * *", () => {
+    const jobStravaRefresh = nodeCron.schedule("0 0 */1 * * *", () => {
       strava_refresh.execute();
     });
 
-    const jobStravaGet = nodeCron.schedule("0 0 */1 * * *", () => {
+    const jobStravaGet = nodeCron.schedule("0 1 */1 * * *", () => {
       strava_getter.execute();
     });
 
-    const jobInviteSend = nodeCron.schedule("0 1 */1 * * *", () => {
+    const jobInviteSend = nodeCron.schedule("*/10 * * * * *", () => {
       invite_manager.execute();
     });
   },
