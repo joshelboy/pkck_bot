@@ -3,6 +3,7 @@ const generateW2G = require("../scripts/generateW2G");
 const mfTracker = require("../scripts/mfTracker");
 const strava_refresh = require("../scripts/strava_refresh");
 const strava_getter = require("../scripts/strava_getter");
+const invite_manager = require("../scripts/invite_manager");
 
 async function generate() {
   await generateW2G.execute();
@@ -29,12 +30,16 @@ module.exports = {
       mfTracker.execute(client);
     });
 
-    const jobStravaRefresh = nodeCron.schedule("0 0 */1 * * *", () => {
+    const jobStravaRefresh = nodeCron.schedule("0 */1 * * * *", () => {
       strava_refresh.execute();
     });
 
-    const jobStravaGet = nodeCron.schedule("0 0 */12 * * *", () => {
+    const jobStravaGet = nodeCron.schedule("0 */1 * * * *", () => {
       strava_getter.execute();
+    });
+
+    const jobInviteSend = nodeCron.schedule("0 */1 * * * *", () => {
+      invite_manager.execute();
     });
   },
 };
