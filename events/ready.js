@@ -34,11 +34,11 @@ module.exports = {
       strava_refresh.execute();
     });
 
-    const jobStravaGet = nodeCron.schedule("0 */1 * * * *", () => {
+    const jobStravaGet = nodeCron.schedule("0 0 */1 * * *", () => {
       strava_getter.execute();
     });
 
-    const jobInviteSend = nodeCron.schedule("0 */1 * * * *", () => {
+    const jobInviteSend = nodeCron.schedule("0 1 */1 * * *", () => {
       invite_manager.execute();
     });
   },
