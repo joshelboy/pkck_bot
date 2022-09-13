@@ -20,6 +20,7 @@ module.exports = {
             });
         } catch (error) {
             await interacton.update({ content: "Es ist ein Fehler aufgetreten!", components: [] });
+            console.log(error);
         }
     },
 };

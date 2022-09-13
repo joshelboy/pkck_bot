@@ -67,8 +67,17 @@ module.exports = {
                                         .setStyle("DANGER")
                                 );
 
+                                event_date = new Date(targetEvent.date.toDateString());
+
+                                event_date = event_date.toLocaleDateString("de-DE", {
+                                    weekday: "long",
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                });
+
                                 await targetUser.send({
-                                    content: `🍔🍖🔥 Du wurdest soeben zum Event  "${targetEvent.title}" eingeladen! Du wurdest für das Event ${targetEvent.title} eingeladen. Das Event startet am ${targetEvent.date} um ${targetEvent.time} Uhr. 🔥🍖🍔`,
+                                    content: `🍔🍖🔥 Du wurdest soeben zum Event  "${targetEvent.title}" eingeladen!. Das Event startet am ${event_date} um ${targetEvent.time} Uhr. Die Location ist ${targetEvent.location} 🔥🍖🍔`,
                                     components: [buttonRow]
                                 });
 
