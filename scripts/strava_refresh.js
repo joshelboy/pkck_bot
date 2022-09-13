@@ -76,6 +76,16 @@ module.exports = {
                 } catch (err) {
                   console.log(err);
                 }
+              } else {
+                let update = "UPDATE users SET strava_expires_at = $1 WHERE strava_id = $2";
+                let update_values = [row.strava_expires_at - 3600, row.strava_id];
+                db_client.query(update, update_values, (err, res) => {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    if (res) {
+                    }
+                });
               }
             }
           }
