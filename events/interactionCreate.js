@@ -21,10 +21,18 @@ module.exports = {
     }
 
     if (interaction.isButton()) {
-      const button = interaction.customId;
+      let customId = interaction.customId;
+      customId = customId.split("&");
+      let button = customId[0];
+      let value = customId[1];
+
       try {
-        await require(`../buttons/${button}`).execute(interaction);
-      } catch (error) {
+        if (value != undefined) {
+          await require(`../buttons/${button}`).execute(interaction, value);
+        } else {
+            await require(`../buttons/${button}`).execute(interaction);
+        }
+        } catch (error) {
         console.error(error);
       }
     }
