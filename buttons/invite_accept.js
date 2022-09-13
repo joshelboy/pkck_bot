@@ -1,3 +1,20 @@
+const { Pool } = require("pg");
+const {
+    user,
+    host,
+    database,
+    password,
+    port,
+} = require("../config/db_config.json");
+
+const db_pool = new Pool({
+    user: user,
+    host: host,
+    database: database,
+    password: password,
+    port: port,
+});
+
 module.exports = {
     customId: "invite_accept",
     name: "invite_accept",

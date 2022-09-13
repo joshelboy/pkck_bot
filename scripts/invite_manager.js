@@ -77,7 +77,7 @@ module.exports = {
                                 });
 
                                 await targetUser.send({
-                                    content: `🍔🍖🔥 Du wurdest soeben zum Event  "${targetEvent.title}" eingeladen!. Das Event startet am ${event_date} um ${targetEvent.time} Uhr. Die Location ist ${targetEvent.location} 🔥🍖🍔`,
+                                    content: `🍔🍖🔥 Du wurdest soeben zum Event  "${targetEvent.title}" eingeladen! Das Event startet am ${event_date} um ${targetEvent.time} Uhr. Die Location ist ${targetEvent.location} 🔥🍖🍔`,
                                     components: [buttonRow]
                                 });
 
