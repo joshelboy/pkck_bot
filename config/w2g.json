@@ -1,5 +1,5 @@
 {
-  "url": "https://w2g.tv/rooms/create.json",
+  "url": "https://api.w2g.tv/rooms/create.json",
   "host": "w2g.tv",
   "path": "/rooms/create.json",
   "method": "POST",
